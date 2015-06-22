@@ -4,12 +4,12 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>java-study-note1 | wutongjie23hao&#39;s Blog</title>
+    <title>linux-memory-manager | wutongjie23hao&#39;s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="wutongjie23hao">
     
-    <meta name="description" content="java学习笔记1java和c#都摒弃了C++中的函数机器参数的const修饰符、宏代换、全局变量和全局函数。">
+    <meta name="description" content="linux内存管理（堆栈、数组）每一个进程都有代码段、数据段、BBS段、堆、栈。">
     
     
     
@@ -70,15 +70,15 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/06/22/java-study-note1/" title="java-study-note1" itemprop="url">java-study-note1</a>
+      <a href="/2015/05/24/linux-memory-manager/" title="linux-memory-manager" itemprop="url">linux-memory-manager</a>
   </h1>
   <p class="article-author">By
     
       <a href="http://wutongjie23hao.github.io" title="wutongjie23hao">wutongjie23hao</a>
     </p>
   <p class="article-time">
-    <time datetime="2015-06-22T12:02:39.000Z" itemprop="datePublished">2015-06-22</time>
-    更新日期:<time datetime="2015-06-22T12:05:13.811Z" itemprop="dateModified">2015-06-22</time>
+    <time datetime="2015-05-24T09:53:23.000Z" itemprop="datePublished">2015-05-24</time>
+    更新日期:<time datetime="2015-05-24T10:15:22.506Z" itemprop="dateModified">2015-05-24</time>
     
   </p>
 </header>
@@ -87,17 +87,37 @@
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
-		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#java学习笔记1"><span class="toc-number">1.</span> <span class="toc-text">java学习笔记1</span></a></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#linux内存管理（堆栈、数组）"><span class="toc-number">1.</span> <span class="toc-text">linux内存管理（堆栈、数组）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#linux内存结构"><span class="toc-number">1.1.</span> <span class="toc-text">linux内存结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结一下"><span class="toc-number">1.2.</span> <span class="toc-text">总结一下</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#程序实例"><span class="toc-number">1.3.</span> <span class="toc-text">程序实例</span></a></li></ol></li></ol>
 		</div>
 		
-		<h1 id="java学习笔记1">java学习笔记1</h1><p>java和c#都摒弃了C++中的函数机器参数的const修饰符、宏代换、全局变量和全局函数。</p>
+		<h1 id="linux内存管理（堆栈、数组）">linux内存管理（堆栈、数组）</h1><p>每一个进程都有代码段、数据段、BBS段、堆、栈。<a id="more"></a></p>
+<h2 id="linux内存结构">linux内存结构</h2><p>每一个进程都有以下区域：</p>
+<ul>
+<li>代码段：代码段是用来存放可执行文件的操作指令，也就是说是它是可执行程序在内存种的镜像。代码段需要防止在运行时被非法修改，所以只准许读取操作，而不允许写入（修改）操作——它是不可写的，拥有可执行权限。</li>
+<li>数据段：数据段用来存放可执行文件中已初始化全局变量，换句话说就是存放程序静态分配[1]的变量和全局变量。<br>BSS段：BSS段包含了程序中未初始化全局变量，这些变量根据不同的c标准都有相应的初始值。</li>
+<li>堆（heap）：堆是用于存放进程运行中被动态分配的内存段，它大小并不固定，可动态扩张或缩减。当进程调用malloc等函数分配内存时，新分配的内存就被动态添加到堆上（堆被扩张）；当利用free等函数释放内存时，被释放的内存从堆中被剔除（堆被缩减）</li>
+<li>栈：栈是用户存放程序临时创建的局部变量，也就是说我们函数括弧“{}”中定义的变量（但不包括static声明的变量，static意味这在数据段中存放变量）。除此以外在函数被调用时，其参数也会被压入发起调用的进程栈中，并且待到调用结束后，函数的返回值也回被存放回栈中。由于栈的先进先出特点，所以栈特别方便用来保存/恢复调用现场。从这个意义上将我们可以把堆栈看成一个临时数据寄存、交换的内存区。</li>
+<li>来一张图表示：<img src="http://blog.chinaunix.net/attachment/201306/30/14811365_1372579348a32M.bmp" alt="linux内存管理图"></li>
+<li>优化,<a href="http://blog.chinaunix.net/uid-14811365-id-3781615.html" target="_blank" rel="external">参考</a>：<ul>
+<li>这个段是用来存放没有初始化的数据，所以连接器实际并不会将特殊的值存储在对象文件， 这样可以减少二进制代码文件的小。</li>
+<li>当这个段被加载到内存时，内存只需要简单的根据写时复制的原则将它们 映射到一个全是0的页上，这样非常高效的设置了初值。 </li>
+</ul>
+</li>
+</ul>
+<h2 id="总结一下">总结一下</h2><ul>
+<li>堆地址由低到高</li>
+<li>栈地址从高到低</li>
+</ul>
+<h2 id="程序实例">程序实例</h2><p>但是，栈里面的数组是怎么存放的呢？答案是把数组作为一个变量，先开辟(数组size)*(数组类型)的内存空间，然后，从低地址开始存放数组项。那么，堆里面的数组是怎么存放的呢？答案似乎也是一样的，同样是整体作为一个变量。来，看一段程序：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;iostream&gt;</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a=-<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> b[<span class="number">4</span>] = &#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span> c= <span class="number">4</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"id(a):%d\n"</span>, (<span class="keyword">unsigned</span> <span class="keyword">int</span>)&amp;a);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"id(b[0]):%d\nid(b[3]):%d\n"</span>, (<span class="keyword">unsigned</span> <span class="keyword">int</span>)&amp;(b[<span class="number">0</span>]), (<span class="keyword">unsigned</span> <span class="keyword">int</span>)&amp;(b[<span class="number">3</span>]));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"id(c):%d\n"</span>, (<span class="keyword">unsigned</span> <span class="keyword">int</span>)&amp;c);</span><br><span class="line">    <span class="keyword">int</span>* d= <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">4</span>];</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"id(d[0]):%d\nid(d[3]):%d"</span>,(<span class="keyword">unsigned</span> <span class="keyword">int</span>)&amp;d[<span class="number">0</span>], (<span class="keyword">unsigned</span> <span class="keyword">int</span>)&amp;d[<span class="number">3</span>]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>运行结果为：<img src="http://img.blog.csdn.net/20150524181331950" alt="程序结果"></p>
+<p>一目了然了吧。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/java/">java</a>
+  <span></span> <a href="/tags/linux/">linux</a><a href="/tags/堆栈、数组/">堆栈、数组</a>
   </div>
 
 
@@ -134,11 +154,19 @@ var jiathis_config = {data_track_clickback:'true'};
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev" >
+ <a href="/2015/05/27/how-to-improve-your-coding/" title="how-to-improve-your-coding">
+  <strong>上一页：</strong><br/>
+  <span>
+  how-to-improve-your-coding</span>
+</a>
+</div>
+
 
 <div class="next">
-<a href="/2015/06/22/hexo-deployer/"  title="hexo-deployer">
+<a href="/2015/05/24/git创建与合并分支/"  title="git创建与合并分支">
  <strong>下一页：</strong><br/> 
- <span>hexo-deployer
+ <span>git创建与合并分支
 </span>
 </a>
 </div>
@@ -155,7 +183,7 @@ var jiathis_config = {data_track_clickback:'true'};
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
-  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#java学习笔记1"><span class="toc-number">1.</span> <span class="toc-text">java学习笔记1</span></a></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#linux内存管理（堆栈、数组）"><span class="toc-number">1.</span> <span class="toc-text">linux内存管理（堆栈、数组）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#linux内存结构"><span class="toc-number">1.1.</span> <span class="toc-text">linux内存结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结一下"><span class="toc-number">1.2.</span> <span class="toc-text">总结一下</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#程序实例"><span class="toc-number">1.3.</span> <span class="toc-text">程序实例</span></a></li></ol></li></ol>
   </div>
 
 <div id="asidepart">

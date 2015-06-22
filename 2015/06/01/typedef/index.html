@@ -4,12 +4,18 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>java-study-note1 | wutongjie23hao&#39;s Blog</title>
+    <title>typedef | wutongjie23hao&#39;s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="wutongjie23hao">
     
-    <meta name="description" content="java学习笔记1java和c#都摒弃了C++中的函数机器参数的const修饰符、宏代换、全局变量和全局函数。">
+    <meta name="description" content="原帖：typedef常见用法
+typedef常见用法常规类型定义例如： typedef unsigned char uchar描述： 
+
+uchar等价于unsigned char类型的定义
+uchar c声明等于unsigned char c声明
+
+数组类型定义例如： typedef int ar">
     
     
     
@@ -70,15 +76,15 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/06/22/java-study-note1/" title="java-study-note1" itemprop="url">java-study-note1</a>
+      <a href="/2015/06/01/typedef/" title="typedef" itemprop="url">typedef</a>
   </h1>
   <p class="article-author">By
     
       <a href="http://wutongjie23hao.github.io" title="wutongjie23hao">wutongjie23hao</a>
     </p>
   <p class="article-time">
-    <time datetime="2015-06-22T12:02:39.000Z" itemprop="datePublished">2015-06-22</time>
-    更新日期:<time datetime="2015-06-22T12:05:13.811Z" itemprop="dateModified">2015-06-22</time>
+    <time datetime="2015-06-01T04:37:12.000Z" itemprop="datePublished">2015-06-01</time>
+    更新日期:<time datetime="2015-06-01T05:39:41.064Z" itemprop="dateModified">2015-06-01</time>
     
   </p>
 </header>
@@ -87,17 +93,73 @@
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
-		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#java学习笔记1"><span class="toc-number">1.</span> <span class="toc-text">java学习笔记1</span></a></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#typedef常见用法"><span class="toc-number">1.</span> <span class="toc-text">typedef常见用法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#常规类型定义"><span class="toc-number">1.1.</span> <span class="toc-text">常规类型定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数组类型定义"><span class="toc-number">1.2.</span> <span class="toc-text">数组类型定义</span></a></li></ol></li></ol>
 		</div>
 		
-		<h1 id="java学习笔记1">java学习笔记1</h1><p>java和c#都摒弃了C++中的函数机器参数的const修饰符、宏代换、全局变量和全局函数。</p>
+		<p>原帖：<a href="http://www.52rd.com/Blog/Detail_RD.Blog_liuyahui_21778.html" target="_blank" rel="external">typedef常见用法</a></p>
+<h1 id="typedef常见用法">typedef常见用法</h1><h2 id="常规类型定义">常规类型定义</h2><p>例如： typedef unsigned char uchar<br>描述： </p>
+<ul>
+<li>uchar等价于unsigned char类型的定义</li>
+<li>uchar c声明等于unsigned char c声明</li>
+</ul>
+<h2 id="数组类型定义">数组类型定义</h2><p>例如： typedef int array[2];<br>描述：</p>
+<ul>
+<li>array等价于 int[2]定义</li>
+<li>array a声明等价于int a[2]声明</li>
+</ul>
+<p>扩展： typedef int array[M][N];<br>描述：</p>
+<ul>
+<li>array等价于int[M][N]定义；</li>
+<li>array a声明等价于int a[M][N]声明</li>
+</ul>
+<p>3.指针类型定义<br>例如： typedef int *pointer;<br>描述：</p>
+<ul>
+<li>pointer等价于 int *定义；</li>
+<li>pointer a声明等价于int *a声明</li>
+</ul>
+<p>例如： typedef int *pointer[M];<br>描述：</p>
+<ul>
+<li>pointer等价于 int *[M]定义；</li>
+<li>pointer p等价于 int *p[M]声明</li>
+</ul>
+<p>4.函数地址说明<br>描述： C把函数名字当做函数的首地址来对待，我们可以使用最简单的方法得到函数地址<br>例如：</p>
+<ul>
+<li>函数：int func(void);</li>
+<li>unsigned long funcAddr=(unsigned long)func;</li>
+<li>funcAddr的值是func函数的首地址</li>
+</ul>
+<p>5.函数声明<br>例如： </p>
+<ul>
+<li>typedef int func(void);</li>
+<li>func等价于int (void)类型函数</li>
+</ul>
+<p>描述1：func f声明等价于int f(void)声明，用于文件的函数声明<br>描述2：func *pf声明等价于int (*pf)(void)声明，用于函数指针的声明，见下一条。<br>6.函数指针<br>例如：typedef int (*func)(void)<br>描述：</p>
+<ul>
+<li>func等价于int (*)(void)类型</li>
+<li>func pf等价于int (*pf)(void)声明，pf是一个函数指针变量</li>
+</ul>
+<p>7.识别typedef的方法：</p>
+<ol>
+<li><p>第一步。使用已知的类型定义替代typedef后面的名称，直到只剩下一个名字不识别为正确。</p>
+<ol>
+<li>如：typedef u32 (*func) (u8);</li>
+<li>从上面的定义中找到typedef <strong>u32 u32;typedef </strong>u8 u8；</li>
+<li>继续找到 typedef unsigned int <strong>u32; typedef unsigned char </strong>u8;</li>
+<li>替代位置名称 typedef unsigned int (*func)(void);</li>
+<li>现在只有func属于未知</li>
+</ol>
+</li>
+<li><p>第二步。未知名字为定义类型，类型为取出名称和typedef的所有部分，如上为func等价于unsigned unsigned int (*)(unsigned char);</p>
+</li>
+<li>第三步。定义一个变量时，变量类型等价于把原变量替代为未知名字的位置所得到的类型<br> func f 等价于 unsigned unsigned int (If)(unsigend char)</li>
+</ol>
   
 	</div>
 		<footer class="article-footer clearfix">
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/java/">java</a>
+  <span></span> <a href="/tags/c-c/">c/c++</a>
   </div>
 
 
@@ -134,11 +196,19 @@ var jiathis_config = {data_track_clickback:'true'};
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev" >
+ <a href="/2015/06/02/python-matplotlib-生成动态图/" title="python-matplotlib-生成动态图">
+  <strong>上一页：</strong><br/>
+  <span>
+  python-matplotlib-生成动态图</span>
+</a>
+</div>
+
 
 <div class="next">
-<a href="/2015/06/22/hexo-deployer/"  title="hexo-deployer">
+<a href="/2015/05/31/mysql-command/"  title="mysql-command">
  <strong>下一页：</strong><br/> 
- <span>hexo-deployer
+ <span>mysql-command
 </span>
 </a>
 </div>
@@ -155,7 +225,7 @@ var jiathis_config = {data_track_clickback:'true'};
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
-  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#java学习笔记1"><span class="toc-number">1.</span> <span class="toc-text">java学习笔记1</span></a></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#typedef常见用法"><span class="toc-number">1.</span> <span class="toc-text">typedef常见用法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#常规类型定义"><span class="toc-number">1.1.</span> <span class="toc-text">常规类型定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数组类型定义"><span class="toc-number">1.2.</span> <span class="toc-text">数组类型定义</span></a></li></ol></li></ol>
   </div>
 
 <div id="asidepart">

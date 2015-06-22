@@ -4,12 +4,12 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>java-study-note1 | wutongjie23hao&#39;s Blog</title>
+    <title>购买域名-设置DNS | wutongjie23hao&#39;s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="wutongjie23hao">
     
-    <meta name="description" content="java学习笔记1java和c#都摒弃了C++中的函数机器参数的const修饰符、宏代换、全局变量和全局函数。">
+    <meta name="description" content="博客搭建好之后就一直想买个域名，这几天在考虑域名和后缀的选择问题。">
     
     
     
@@ -70,15 +70,15 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/06/22/java-study-note1/" title="java-study-note1" itemprop="url">java-study-note1</a>
+      <a href="/2015/05/22/购买域名-设置DNS/" title="购买域名-设置DNS" itemprop="url">购买域名-设置DNS</a>
   </h1>
   <p class="article-author">By
     
       <a href="http://wutongjie23hao.github.io" title="wutongjie23hao">wutongjie23hao</a>
     </p>
   <p class="article-time">
-    <time datetime="2015-06-22T12:02:39.000Z" itemprop="datePublished">2015-06-22</time>
-    更新日期:<time datetime="2015-06-22T12:05:13.811Z" itemprop="dateModified">2015-06-22</time>
+    <time datetime="2015-05-22T05:28:12.000Z" itemprop="datePublished">2015-05-22</time>
+    更新日期:<time datetime="2015-05-24T09:31:52.511Z" itemprop="dateModified">2015-05-24</time>
     
   </p>
 </header>
@@ -87,17 +87,19 @@
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
-		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#java学习笔记1"><span class="toc-number">1.</span> <span class="toc-text">java学习笔记1</span></a></li></ol>
+		
 		</div>
 		
-		<h1 id="java学习笔记1">java学习笔记1</h1><p>java和c#都摒弃了C++中的函数机器参数的const修饰符、宏代换、全局变量和全局函数。</p>
+		<p>博客搭建好之后就一直想买个域名，这几天在考虑域名和后缀的选择问题。<a id="more"></a>后缀好说，首选<code>.com</code>，次选<code>.me</code>或<code>.net</code>。至于域名，由于本名拼音（zhaowei）和博名（zipperary）都已经被注册，只好另外构思。最终选择了zipperary.com这个域名。想法来源于library这个词，…rary取意存放之地，所以zipperary的意思就是zippera的博客存放之地了。<br>域名的购买，首选Goddady。原因如下：<br>在国外，不受国内各种干扰。<br>国外域名商中唯一支持支付宝付款的。<br>价格不高，还经常有优惠。<br>信誉好，口碑好，靠谱。</p>
+<p>但由于是全英文，还有Goddady强大的推销力，到处在引导你购买它的优惠服务，这样，注册和购买还是费些时间的。我的域名标价是年费11美元，税后根据实时汇率，也就六十多中国大洋，不算贵。<br>域名购买完成后就要在Goddady网站里设置dns服务商了。Goddady会默认提供两个国外的，对于国内网站和国内访问来说，最好使用国内的dns服务商，这里选择口碑最好使用最多的免费dns服务商dnspod.cn。这里解释下goddady和dnspod的关系。<br>Goddady是域名服务商，我们需要在这里选择由哪个dns服务商为我们的网站提供域名解析服务。用下面的方式，指定为dnspod：<br><img src="http://ww4.sinaimg.cn/large/5e8cb366jw1e538mz2fwaj20m60c8dhg.jpg" alt="dns-config1"><br>设置好之后，去dnspod.cn注册账号，添加网站(zipperary.com)，设置域名到ip的映射关系，如下：<br><img src="http://ww3.sinaimg.cn/large/5e8cb366jw1e538pcdcxtj20tt0at75b.jpg" alt="dns-config2"><br><img src="http://ww2.sinaimg.cn/large/5e8cb366jw1e538q78xoqj20st0aowfq.jpg" alt="dns-config3"><br><em>(注：除了A记录，也可以添加为CNAME记录，记录值就是zippera.github.io这种形式。两种方式任选其一即可。)</em><br>接下来需要去自己的网站进行域名设置。不同的网站不同的设置方式，对于hexo，进入source文件夹，创建名为<code>CNAME</code>的文件，编辑：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zipperary.com</span><br></pre></td></tr></table></figure></p>
+<p>这样就设置好了，访问<a href="http://zipperary.com" target="_blank" rel="external">http://zipperary.com</a> 就能看到自己的网站了。<br>如果想使用<code>www.zipperary.com</code>形式，<code>CNAME</code>文件中相应地变为<code>www.zipperary.com</code>即可。<br>需要注意的是，goddady和dnspod的设置都会有时间不等的延迟，并不一定会马上生效。<br><a href="http://zipperary.com/2013/05/27/domain-name-and-dns/" target="_blank" rel="external">原文链接</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/java/">java</a>
+  <span></span> <a href="/tags/hexo/">hexo</a>
   </div>
 
 
@@ -134,11 +136,19 @@ var jiathis_config = {data_track_clickback:'true'};
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev" >
+ <a href="/2015/05/24/hexo在github上构建免费的web应用/" title="hexo在github上构建免费的web应用">
+  <strong>上一页：</strong><br/>
+  <span>
+  hexo在github上构建免费的web应用</span>
+</a>
+</div>
+
 
 <div class="next">
-<a href="/2015/06/22/hexo-deployer/"  title="hexo-deployer">
+<a href="/2015/05/22/在网页上显示数学公式/"  title="在网页上显示数学公式">
  <strong>下一页：</strong><br/> 
- <span>hexo-deployer
+ <span>在网页上显示数学公式
 </span>
 </a>
 </div>
@@ -155,7 +165,7 @@ var jiathis_config = {data_track_clickback:'true'};
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
-  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#java学习笔记1"><span class="toc-number">1.</span> <span class="toc-text">java学习笔记1</span></a></li></ol>
+  
   </div>
 
 <div id="asidepart">
