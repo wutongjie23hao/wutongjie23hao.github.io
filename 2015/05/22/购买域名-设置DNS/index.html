@@ -1,0 +1,382 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>购买域名-设置DNS | wutongjie23hao&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="wutongjie23hao">
+    
+    <meta name="description" content="博客搭建好之后就一直想买个域名，这几天在考虑域名和后缀的选择问题。">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      <div>
+<a href="https://github.com/wutongjie23hao"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="wutongjie23hao&#39;s Blog" title="wutongjie23hao&#39;s Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="wutongjie23hao&#39;s Blog">wutongjie23hao&#39;s Blog</a></h1>
+				<h2 class="blog-motto">学如逆水行舟，不进则退；心似平野放马，易放难收。</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+						<li><a href="/todolist">ToDo</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:wutongjie23hao.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/05/22/购买域名-设置DNS/" title="购买域名-设置DNS" itemprop="url">购买域名-设置DNS</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://wutongjie23hao.github.io" title="wutongjie23hao">wutongjie23hao</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2015-05-22T05:28:12.000Z" itemprop="datePublished">2015-05-22</time>
+    更新日期:<time datetime="2015-05-24T09:31:52.511Z" itemprop="dateModified">2015-05-24</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+		</div>
+		
+		<p>博客搭建好之后就一直想买个域名，这几天在考虑域名和后缀的选择问题。<a id="more"></a>后缀好说，首选<code>.com</code>，次选<code>.me</code>或<code>.net</code>。至于域名，由于本名拼音（zhaowei）和博名（zipperary）都已经被注册，只好另外构思。最终选择了zipperary.com这个域名。想法来源于library这个词，…rary取意存放之地，所以zipperary的意思就是zippera的博客存放之地了。<br>域名的购买，首选Goddady。原因如下：<br>在国外，不受国内各种干扰。<br>国外域名商中唯一支持支付宝付款的。<br>价格不高，还经常有优惠。<br>信誉好，口碑好，靠谱。</p>
+<p>但由于是全英文，还有Goddady强大的推销力，到处在引导你购买它的优惠服务，这样，注册和购买还是费些时间的。我的域名标价是年费11美元，税后根据实时汇率，也就六十多中国大洋，不算贵。<br>域名购买完成后就要在Goddady网站里设置dns服务商了。Goddady会默认提供两个国外的，对于国内网站和国内访问来说，最好使用国内的dns服务商，这里选择口碑最好使用最多的免费dns服务商dnspod.cn。这里解释下goddady和dnspod的关系。<br>Goddady是域名服务商，我们需要在这里选择由哪个dns服务商为我们的网站提供域名解析服务。用下面的方式，指定为dnspod：<br><img src="http://ww4.sinaimg.cn/large/5e8cb366jw1e538mz2fwaj20m60c8dhg.jpg" alt="dns-config1"><br>设置好之后，去dnspod.cn注册账号，添加网站(zipperary.com)，设置域名到ip的映射关系，如下：<br><img src="http://ww3.sinaimg.cn/large/5e8cb366jw1e538pcdcxtj20tt0at75b.jpg" alt="dns-config2"><br><img src="http://ww2.sinaimg.cn/large/5e8cb366jw1e538q78xoqj20st0aowfq.jpg" alt="dns-config3"><br><em>(注：除了A记录，也可以添加为CNAME记录，记录值就是zippera.github.io这种形式。两种方式任选其一即可。)</em><br>接下来需要去自己的网站进行域名设置。不同的网站不同的设置方式，对于hexo，进入source文件夹，创建名为<code>CNAME</code>的文件，编辑：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zipperary.com</span><br></pre></td></tr></table></figure></p>
+<p>这样就设置好了，访问<a href="http://zipperary.com" target="_blank" rel="external">http://zipperary.com</a> 就能看到自己的网站了。<br>如果想使用<code>www.zipperary.com</code>形式，<code>CNAME</code>文件中相应地变为<code>www.zipperary.com</code>即可。<br>需要注意的是，goddady和dnspod的设置都会有时间不等的延迟，并不一定会马上生效。<br><a href="http://zipperary.com/2013/05/27/domain-name-and-dns/" target="_blank" rel="external">原文链接</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/hexo/">hexo</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/技术/">技术</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  
+<!-- JiaThis Button BEGIN -->
+<div class="jiathis_style_32x32">
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_tqq"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+	<a href="http://www.jiathis.com/share?uid=2033935" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">
+var jiathis_config = {data_track_clickback:'true'};
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=2033935" charset="utf-8"></script>
+<!-- JiaThis Button END -->    
+
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/05/24/hexo在github上构建免费的web应用/" title="hexo在github上构建免费的web应用">
+  <strong>上一页：</strong><br/>
+  <span>
+  hexo在github上构建免费的web应用</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/05/22/在网页上显示数学公式/"  title="在网页上显示数学公式">
+ <strong>下一页：</strong><br/> 
+ <span>在网页上显示数学公式
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+	<div class="ds-thread"></div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+  
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+			<li><a href="/categories/技术/" title="技术">技术<sup>14</sup></a></li>
+		
+			<li><a href="/categories/测试/" title="测试">测试<sup>4</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/C-C/" title="C/C++">C/C++<sup>1</sup></a></li>
+		
+			<li><a href="/tags/c-c/" title="c/c++">c/c++<sup>3</sup></a></li>
+		
+			<li><a href="/tags/git/" title="git">git<sup>1</sup></a></li>
+		
+			<li><a href="/tags/hexo/" title="hexo">hexo<sup>3</sup></a></li>
+		
+			<li><a href="/tags/java/" title="java">java<sup>2</sup></a></li>
+		
+			<li><a href="/tags/linux/" title="linux">linux<sup>1</sup></a></li>
+		
+			<li><a href="/tags/mysql/" title="mysql">mysql<sup>1</sup></a></li>
+		
+			<li><a href="/tags/python/" title="python">python<sup>1</sup></a></li>
+		
+			<li><a href="/tags/堆栈、数组/" title="堆栈、数组">堆栈、数组<sup>1</sup></a></li>
+		
+			<li><a href="/tags/数据结构/" title="数据结构">数据结构<sup>2</sup></a></li>
+		
+			<li><a href="/tags/测试/" title="测试">测试<sup>3</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">简介</p>
+<pre>
+名字：<a href="http://wutongjie23hao.github.io/about/" target="_blank" title="about me" style="color:blue">Ray</a>
+昵称：<a href="http://blog.csdn.net/rainloving" target="_blank" title="csdn blog" style="color:blue">rainloving</a>|<a href="https://github.com/wutongjie23hao" target="_blank" title="gihub" style="color:blue">wutongjie23hao</a>
+现状：<a href="http://graduate.cug.edu.cn/" target="_blank" title="地大研究生院" style="color:blue">南望山下，东湖之畔，研究...</a>
+QQ：2560786448
+
+</pre>
+</div>
+
+  <iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=1&isTitle=1&noborder=1&isWeibo=1&isFans=1&uid=1745728450&verifier=b972bd18&dpc=1"></iframe>
+
+</aside>
+</div>
+	  
+
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2015 
+		
+		<a href="http://wutongjie23hao.github.io/about/index.html" target="_blank" title="wutongjie23hao">wutongjie23hao</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"wutongjie23hao"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </body>
+</html>
