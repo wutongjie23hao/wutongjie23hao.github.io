@@ -4,18 +4,20 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>typedef | wutongjie23hao&#39;s Blog</title>
+    <title>hexo-error-spawn | wutongjie23hao&#39;s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="wutongjie23hao">
     
-    <meta name="description" content="原帖：typedef常见用法
-typedef常见用法常规类型定义例如： typedef unsigned char uchar描述： 
+    <meta name="description" content="hexo部署问题：Error: spawn git ENOENT目录
+前言
+问题描述
+原因分析
+解决方法
+参考文档
 
-uchar等价于unsigned char类型的定义
-uchar c声明等于unsigned char c声明
 
-数组类型定义例如： typedef int ar">
+前言前面文章hexo在github上构建免费的web应用中部署的时候，出现了问题Error: spawn git ENOENT还没有解决，今天在另外的机子上部署的时候又出现了同样的">
     
     
     
@@ -76,15 +78,15 @@ uchar c声明等于unsigned char c声明
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/06/01/typedef/" title="typedef" itemprop="url">typedef</a>
+      <a href="/2015/06/22/hexo-error-spawn/" title="hexo-error-spawn" itemprop="url">hexo-error-spawn</a>
   </h1>
   <p class="article-author">By
     
       <a href="http://wutongjie23hao.github.io" title="wutongjie23hao">wutongjie23hao</a>
     </p>
   <p class="article-time">
-    <time datetime="2015-06-01T04:37:12.000Z" itemprop="datePublished">2015-06-01</time>
-    更新日期:<time datetime="2015-06-01T05:39:41.064Z" itemprop="dateModified">2015-06-01</time>
+    <time datetime="2015-06-22T10:26:29.000Z" itemprop="datePublished">2015-06-22</time>
+    更新日期:<time datetime="2015-06-22T11:34:12.290Z" itemprop="dateModified">2015-06-22</time>
     
   </p>
 </header>
@@ -93,73 +95,33 @@ uchar c声明等于unsigned char c声明
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
-		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#typedef常见用法"><span class="toc-number">1.</span> <span class="toc-text">typedef常见用法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#常规类型定义"><span class="toc-number">1.1.</span> <span class="toc-text">常规类型定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数组类型定义"><span class="toc-number">1.2.</span> <span class="toc-text">数组类型定义</span></a></li></ol></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#hexo部署问题：Error:_spawn_git_ENOENT"><span class="toc-number">1.</span> <span class="toc-text">hexo部署问题：Error: spawn git ENOENT</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#目录"><span class="toc-number">1.1.</span> <span class="toc-text">目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.2.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题描述"><span class="toc-number">1.3.</span> <span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原因分析"><span class="toc-number">1.4.</span> <span class="toc-text">原因分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方法"><span class="toc-number">1.5.</span> <span class="toc-text">解决方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文档"><span class="toc-number">1.6.</span> <span class="toc-text">参考文档</span></a></li></ol></li></ol>
 		</div>
 		
-		<p>原帖：<a href="http://www.52rd.com/Blog/Detail_RD.Blog_liuyahui_21778.html" target="_blank" rel="external">typedef常见用法</a></p>
-<h1 id="typedef常见用法">typedef常见用法</h1><h2 id="常规类型定义">常规类型定义</h2><p>例如： typedef unsigned char uchar<br>描述： </p>
-<ul>
-<li>uchar等价于unsigned char类型的定义</li>
-<li>uchar c声明等于unsigned char c声明</li>
+		<h1 id="hexo部署问题：Error:_spawn_git_ENOENT">hexo部署问题：Error: spawn git ENOENT</h1><h2 id="目录">目录</h2><ul>
+<li><a href="#前言">前言</a></li>
+<li><a href="#问题描述">问题描述</a></li>
+<li><a href="#原因分析">原因分析</a></li>
+<li><a href="#解决方法">解决方法</a></li>
+<li><a href="#参考文档">参考文档</a></li>
 </ul>
-<h2 id="数组类型定义">数组类型定义</h2><p>例如： typedef int array[2];<br>描述：</p>
-<ul>
-<li>array等价于 int[2]定义</li>
-<li>array a声明等价于int a[2]声明</li>
-</ul>
-<p>扩展： typedef int array[M][N];<br>描述：</p>
-<ul>
-<li>array等价于int[M][N]定义；</li>
-<li>array a声明等价于int a[M][N]声明</li>
-</ul>
-<p>3.指针类型定义<br>例如： typedef int *pointer;<br>描述：</p>
-<ul>
-<li>pointer等价于 int *定义；</li>
-<li>pointer a声明等价于int *a声明</li>
-</ul>
-<p>例如： typedef int *pointer[M];<br>描述：</p>
-<ul>
-<li>pointer等价于 int *[M]定义；</li>
-<li>pointer p等价于 int *p[M]声明</li>
-</ul>
-<p>4.函数地址说明<br>描述： C把函数名字当做函数的首地址来对待，我们可以使用最简单的方法得到函数地址<br>例如：</p>
-<ul>
-<li>函数：int func(void);</li>
-<li>unsigned long funcAddr=(unsigned long)func;</li>
-<li>funcAddr的值是func函数的首地址</li>
-</ul>
-<p>5.函数声明<br>例如： </p>
-<ul>
-<li>typedef int func(void);</li>
-<li>func等价于int (void)类型函数</li>
-</ul>
-<p>描述1：func f声明等价于int f(void)声明，用于文件的函数声明<br>描述2：func *pf声明等价于int (*pf)(void)声明，用于函数指针的声明，见下一条。<br>6.函数指针<br>例如：typedef int (*func)(void)<br>描述：</p>
-<ul>
-<li>func等价于int (*)(void)类型</li>
-<li>func pf等价于int (*pf)(void)声明，pf是一个函数指针变量</li>
-</ul>
-<p>7.识别typedef的方法：</p>
-<ol>
-<li><p>第一步。使用已知的类型定义替代typedef后面的名称，直到只剩下一个名字不识别为正确。</p>
-<ol>
-<li>如：typedef u32 (*func) (u8);</li>
-<li>从上面的定义中找到typedef <strong>u32 u32;typedef </strong>u8 u8；</li>
-<li>继续找到 typedef unsigned int <strong>u32; typedef unsigned char </strong>u8;</li>
-<li>替代位置名称 typedef unsigned int (*func)(void);</li>
-<li>现在只有func属于未知</li>
-</ol>
-</li>
-<li><p>第二步。未知名字为定义类型，类型为取出名称和typedef的所有部分，如上为func等价于unsigned unsigned int (*)(unsigned char);</p>
-</li>
-<li>第三步。定义一个变量时，变量类型等价于把原变量替代为未知名字的位置所得到的类型<br> func f 等价于 unsigned unsigned int (If)(unsigend char)</li>
-</ol>
+<p><a name="前言"></a></p>
+<h2 id="前言">前言</h2><p>前面文章<a href="http://wutongjie23hao.github.io/2015/05/24/hexo%E5%9C%A8github%E4%B8%8A%E6%9E%84%E5%BB%BA%E5%85%8D%E8%B4%B9%E7%9A%84web%E5%BA%94%E7%94%A8/">hexo在github上构建免费的web应用</a>中部署的时候，出现了问题<code>Error: spawn git ENOENT</code>还没有解决，今天在另外的机子上部署的时候又出现了同样的问题，最后找到了解决方法。</p>
+<p><a name="问题描述"></a></p>
+<h2 id="问题描述">问题描述</h2><p>执行<code>hexo d</code>报错<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Error: spawn git ENOENT</span><br><span class="line">    at exports._errnoException (util<span class="class">.js</span>:<span class="number">746</span>:<span class="number">11</span>)</span><br><span class="line">    at Process<span class="class">.ChildProcess</span>._handle<span class="class">.onexit</span> (child_process<span class="class">.js</span>:<span class="number">1053</span>:<span class="number">32</span>)</span><br><span class="line">    at child_process<span class="class">.js</span>:<span class="number">1144</span>:<span class="number">20</span></span><br><span class="line">    at process._tickCallback (node<span class="class">.js</span>:<span class="number">355</span>:<span class="number">11</span>)</span><br></pre></td></tr></table></figure></p>
+<p><a name="原因分析"></a></p>
+<h2 id="原因分析">原因分析</h2><p>具体原因我也说不清楚，网上有一个人在启动git-server的时候，也出现了同样的问题。所以，hexo部署的时候应该也是一系列git命令的合集，需要git-server的支持。</p>
+<p><a name="解决方法"></a></p>
+<h2 id="解决方法">解决方法</h2><p>添加环境变量：<code>C:\Program Files (x86)\Git\bin;C:\Program Files (x86)\Git\libexec\git-core</code>，这样就解决了问题了。</p>
+<p><a name="参考文档"></a></p>
+<h2 id="参考文档">参考文档</h2><p><a href="http://www.dotblogs.com.tw/rickyteng/archive/2013/06/05/105284.aspx" target="_blank" rel="external">[nodejs]在 windows 安裝 git-server 有奇怪事件發生(已解決)</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/c-c/">c/c++</a>
+  <span></span> <a href="/tags/hexo/">hexo</a>
   </div>
 
 
@@ -197,18 +159,18 @@ var jiathis_config = {data_track_clickback:'true'};
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2015/06/02/python-matplotlib-生成动态图/" title="python-matplotlib-生成动态图">
+ <a href="/2015/06/22/hexo-deployer/" title="hexo-deployer">
   <strong>上一页：</strong><br/>
   <span>
-  python-matplotlib-生成动态图</span>
+  hexo-deployer</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2015/05/31/mysql-command/"  title="mysql-command">
+<a href="/2015/06/02/python-matplotlib-生成动态图/"  title="python-matplotlib-生成动态图">
  <strong>下一页：</strong><br/> 
- <span>mysql-command
+ <span>python-matplotlib-生成动态图
 </span>
 </a>
 </div>
@@ -225,7 +187,7 @@ var jiathis_config = {data_track_clickback:'true'};
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
-  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#typedef常见用法"><span class="toc-number">1.</span> <span class="toc-text">typedef常见用法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#常规类型定义"><span class="toc-number">1.1.</span> <span class="toc-text">常规类型定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数组类型定义"><span class="toc-number">1.2.</span> <span class="toc-text">数组类型定义</span></a></li></ol></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#hexo部署问题：Error:_spawn_git_ENOENT"><span class="toc-number">1.</span> <span class="toc-text">hexo部署问题：Error: spawn git ENOENT</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#目录"><span class="toc-number">1.1.</span> <span class="toc-text">目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.2.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题描述"><span class="toc-number">1.3.</span> <span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原因分析"><span class="toc-number">1.4.</span> <span class="toc-text">原因分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方法"><span class="toc-number">1.5.</span> <span class="toc-text">解决方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文档"><span class="toc-number">1.6.</span> <span class="toc-text">参考文档</span></a></li></ol></li></ol>
   </div>
 
 <div id="asidepart">
