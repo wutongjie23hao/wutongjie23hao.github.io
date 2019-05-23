@@ -1,0 +1,1 @@
+删除镜像命令：  docker rmi $(docker images | awk '{ print $1":"$2 }' )
