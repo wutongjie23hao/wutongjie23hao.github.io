@@ -84,5 +84,9 @@ friends: [
     {
         title: "jianshu",
         href: "https://www.jianshu.com/u/26226f25f267"
+    },
+    {
+        title: "skayi",
+        href: "http://www.skayi.com"
     }
 ]
