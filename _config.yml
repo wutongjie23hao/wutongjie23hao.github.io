@@ -63,6 +63,7 @@ duoshuo_share: true                     # set to false if you want to use Commen
 # Google Analytics
 # ga_track_id: 'UA-49627206-1'            # Format: UA-xxxxxx-xx
 # ga_domain: huangxuan.me
+busuanzi: 123
 
 
 
