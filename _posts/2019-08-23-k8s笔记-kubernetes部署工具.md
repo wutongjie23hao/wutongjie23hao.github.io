@@ -20,16 +20,16 @@ helm为k8s平台下的包管理器，官网:[http://www.helm.sh](http://www.helm
 helm为k8s平台下的包管理器，所谓的包就是chart。安装chart后的应用或者服务实例就是release。
 
 ### 1.2 helm命令
-* helm init： 安装tiller到k8s集群，可指定namespace和tiller的镜像
-* helm reset：删除tiller
-* helm repo list：列出本地的chart 仓库列表
-* helm repo add: 增加chart仓库到本地
+* ``helm init``： 安装tiller到k8s集群，可指定namespace和tiller的镜像
+* ``helm reset``：删除tiller
+* ``helm repo list``：列出本地的chart 仓库列表
+* ``helm repo add <repo_name> <repo_url>``: 增加chart仓库到本地
 * ``helm push <chart> <repo>``(需要安装相关插件): push本地chart到指定仓库
-* helm package <chart>: 打包本地chart为tgz文件，在安装有requirements.yaml文件的chart时候，有用
-* helm install <chart>: 安装指定chart到集群 
-* helm list: 将当前k8s集群的release列出来
-* helm upgrade <release> <chart>: 用指定chart更新指定release
-* helm status <release>: 查看release详情
+* ``helm package <chart>``: 打包本地chart为tgz文件，在安装有requirements.yaml文件的chart时候，有用
+* ``helm install <chart>``: 安装指定chart到集群 
+* ``helm list``: 将当前k8s集群的release列出来
+* ``helm upgrade <release> <chart>``: 用指定chart更新指定release
+* ``helm status <release>``: 查看release详情
 
 此外还有回滚、查看指定release历史版本等命令。
 
@@ -55,11 +55,14 @@ kustomize是在已经有的resource基础上，进行overlay来覆盖写必要�
 2. 对模版的代码浸入性比较小
 
 ### 3.1 使用步骤
-1. 创建kustomize文件。\
-  在包含了定义了k8s资源的yaml文件夹中创建名为``kustomization.yaml``的文件。 \
-  这个文件用来对已经存在的k8s资源文件进行覆写。 \
-  最后的文件结构如下： \
-  ![base](/img/post/kustomize.base.jpg) \
+1. 创建kustomize文件。
+    
+    在包含了定义了k8s资源的yaml文件夹中创建名为``kustomization.yaml``的文件。 
+
+    这个文件用来对已经存在的k8s资源文件进行覆写。 
+    
+    最后的文件结构如下： 
+  ![base](/img/post/kustomize.base.jpg) 
   文件结构如下： 
     ```
     ~/someApp
@@ -67,7 +70,8 @@ kustomize是在已经有的resource基础上，进行overlay来覆盖写必要�
     ├── kustomization.yaml
     └── service.yaml
     ```
-    生成yaml文件：``kustomize build ~/someApp`` \
+    生成yaml文件：``kustomize build ~/someApp`` 
+
     使用生成的yaml到特点的k8s集群：``kustomize build ~/someApp | kubectl apply -f -``
     > 备注： kustomize不像helm，自己实现了 kubectl一样 的客户端，只是生成yaml文件
 
@@ -93,13 +97,16 @@ kustomize是在已经有的resource基础上，进行overlay来覆盖写必要�
     ```
     ``base``用来存放各个环境的公共配置
     base中kustomization.yaml内容如下：
+
     ```yaml
     resources:
     - deployment.yaml
     - service.yaml
     ```
-    在overlay中可以自定义子变量，上面定义了两个子环境(development\production):
+
+    在overlay中可以自定义子变量，上面定义了两个子环境(development/production):
     overlays/development/kustomization.yaml文件如下：
+
     ```yaml
     bases:
     - ../../base
@@ -108,6 +115,7 @@ kustomize是在已经有的resource基础上，进行overlay来覆盖写必要�
     - cpu_count.yaml
     - replica_count.yaml
     ```
+
     overlays下继承了base的配置，并且在此基础上添加了patch：cpu_count.yaml、replica_count.yaml配置，另外，customize不仅支持文件级别的patch，还支持对一个文件某些字段的patch，如下所示replica_count.yaml只包含了有关replicas的部分即可，在执行kustomize build之后，会将这部分覆盖。
 
     部署使用：
