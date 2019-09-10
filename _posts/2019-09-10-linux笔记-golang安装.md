@@ -6,7 +6,7 @@ author: Xiaolei.liang
 header-img: "img/post-bg-unix-linux.jpg"
 catalog: true
 tags:
-  - go
+  - golang
   - linux
 ---
 
@@ -17,7 +17,7 @@ tags:
   ``$ tar -C /usr/local/ -xzvf go1.10.2.linux-amd64.tar.gz``
 3. 设置环境变量
   ```sh
-  	$ vim /etc/profile
+  $ vim /etc/profile
 	export GOROOT=/usr/local/go
     export GOPATH=/home/zhangboo/goProject 
     export GOBIN=$GOPATH/bin
