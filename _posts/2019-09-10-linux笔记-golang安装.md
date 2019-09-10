@@ -17,14 +17,12 @@ tags:
   ``$ tar -C /usr/local/ -xzvf go1.10.2.linux-amd64.tar.gz``
 3. 设置环境变量
   ```sh
-
     $ vim /etc/profile
 	export GOROOT=/usr/local/go
     export GOPATH=/home/zhangboo/goProject 
     export GOBIN=$GOPATH/bin
     export PATH=$PATH:$GOROOT/bin
     export PATH=$PATH:$GOPATH/bin
-
   ```
 4. 使环境变量生效
   ``$ source /etc/profile``
