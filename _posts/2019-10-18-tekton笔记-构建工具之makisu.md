@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "makisu使用和推送镜像到harbor"
+title: "CI工具makisu使用和推送镜像到harbor"
 subtitle: "构建工具之makisu"
 author: Xiaolei.liang
 header-img: "img/post-bg-unix-linux.jpg"
