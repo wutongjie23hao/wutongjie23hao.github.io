@@ -1,0 +1,165 @@
+[
+    "build-worker",
+    "compile-from-source",
+    "deploy-using-kubectl",
+    "echo-hello-world"
+]
+
+## build-worker
+{
+    "kind": "Task",
+    "apiVersion": "tekton.dev/v1alpha1",
+    "metadata": {
+        "name": "build-worker",
+        "namespace": "default",
+        "selfLink": "/apis/tekton.dev/v1alpha1/namespaces/default/tasks/build-worker",
+        "uid": "987496bc-f562-11e9-a5eb-025000000001",
+        "resourceVersion": "3936493",
+        "generation": 1,
+        "creationTimestamp": "2019-10-23T06:59:02Z"
+    },
+    "spec": {
+        "inputs": {
+            "resources": [
+                {
+                    "name": "git-for-dockerfile",
+                    "type": "git"
+                }
+            ],
+            "params": [
+                {
+                    "name": "baseImage",
+                    "type": "string",
+                    "description": "The dockerfile's baseImage"
+                },
+                {
+                    "name": "pathToContext",
+                    "type": "string",
+                    "description": "the build context",
+                    "default": "tomcat"
+                },
+                {
+                    "name": "pushRegistry",
+                    "type": "string",
+                    "description": "which registry to push"
+                },
+                {
+                    "name": "warName",
+                    "type": "string",
+                    "description": "war name"
+                },
+                {
+                    "name": "pathToDockerfile",
+                    "type": "string",
+                    "description": "the path to dockerfile",
+                    "default": "tomcat/Dockerfile"
+                }
+            ]
+        },
+        "outputs": {
+            "resources": [
+                {
+                    "name": "builtImage",
+                    "type": "image",
+                    "outputImageDir": "/builder/home/image-outputs/builtImage"
+                }
+            ]
+        },
+        "steps": [
+            {
+                "name": "download-dockerfile",
+                "image": "is.harbor.svc.hctest.n.jd.local/tekton/image:mvn-jss.v3",
+                "command": [
+                    "/bin/sh"
+                ],
+                "args": [
+                    "-c",
+                    "python ./tmp.py \"${inputs.params.baseImage}\" \"`python /opt/push2jss.py obvzdCudMdvPpTud L0FydvKFjQlnIBg2oXa1vLfhxX0ugZSCQxZ1gPES storage.jd.com 80 applications tomcat/${inputs.params.warName}`\" ${inputs.params.pathToDockerfile}"
+                ],
+                "workingDir": "/workspace/git-for-dockerfile",
+                "resources": {}
+            },
+            {
+                "name": "build-docker-image",
+                "image": "is.harbor.svc.hctest.n.jd.local/tekton/image:kaniko-v0.13.0-1",
+                "command": [
+                    "/kaniko/executor"
+                ],
+                "args": [
+                    "--dockerfile=${inputs.params.pathToDockerfile}",
+                    "--destination=${outputs.resources.builtImage.url}",
+                    "--context=${outputs.params.pathToContext}",
+                    "--skip-tls-verify-registry=${inputs.params.pushRegistry}"
+                ],
+                "workingDir": "/workspace/git-for-dockerfile",
+                "resources": {}
+            }
+        ]
+    }
+}
+
+
+## compile-from-source
+{
+    "kind": "Task",
+    "apiVersion": "tekton.dev/v1alpha1",
+    "metadata": {
+        "name": "compile-from-source",
+        "namespace": "default",
+        "selfLink": "/apis/tekton.dev/v1alpha1/namespaces/default/tasks/compile-from-source",
+        "uid": "98b06d1e-f562-11e9-a5eb-025000000001",
+        "resourceVersion": "3936495",
+        "generation": 1,
+        "creationTimestamp": "2019-10-23T06:59:02Z"
+    },
+    "spec": {
+        "inputs": {
+            "resources": [
+                {
+                    "name": "git-source",
+                    "type": "git"
+                }
+            ],
+            "params": [
+                {
+                    "name": "pathToSource",
+                    "type": "string",
+                    "description": "The path to the source to build",
+                    "default": "/workspace/git-source/"
+                },
+                {
+                    "name": "pathToWar",
+                    "type": "string",
+                    "description": "path to war",
+                    "default": "demo"
+                },
+                {
+                    "name": "warName",
+                    "type": "string",
+                    "description": "The path to the source to build",
+                    "default": "test123.war"
+                },
+                {
+                    "name": "compileCommand",
+                    "type": "string",
+                    "description": "The command to build a war package.",
+                    "default": "mvn clean -U install -Dmaven.test.skip=true -X"
+                }
+            ]
+        },
+        "steps": [
+            {
+                "name": "compile",
+                "image": "is.harbor.svc.hctest.n.jd.local/tekton/image:mvn-jss.v3",
+                "command": [
+                    "/bin/sh"
+                ],
+                "args": [
+                    "-c",
+                    "cd ${inputs.params.pathToSource} && ${inputs.params.compileCommand} && cd ${inputs.params.pathToSource} && mkdir -p tomcat && cp -f ${inputs.params.pathToWar}/*.war tomcat/${inputs.params.warName}&& python /opt/push2jss.py obvzdCudMdvPpTud L0FydvKFjQlnIBg2oXa1vLfhxX0ugZSCQxZ1gPES storage.jd.com 80 applications tomcat/${inputs.params.warName} push"
+                ],
+                "resources": {}
+            }
+        ]
+    }
+}
