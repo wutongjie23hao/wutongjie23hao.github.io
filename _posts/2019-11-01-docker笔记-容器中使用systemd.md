@@ -1,3 +1,14 @@
+---
+layout: post
+title: "docker笔记: 容器中使用systemd"
+subtitle: "容器中使用systemctl"
+author: Xiaolei.liang
+header-img: "img/post-bg-unix-linux.jpg"
+catalog: true
+tags:
+  - docker
+  - linux
+---
 ## 容器中无法使用systemctl
 直接使用``docker run -d --privileged centos init``
 
