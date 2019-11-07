@@ -103,10 +103,14 @@ RUN yum -y install make gcc gcc-c++ zlib* openssl openssl-devel &&\
     pip config set global.trusted-host pypi.tuna.tsinghua.edu.cn
 ```
 # 7. 问题
-1. ``Can't connect to HTTPS URL because the SSL module is not available`` \
-  原因：在Python3.7之后的版本，依赖的openssl，必须要是1.1或者1.0.2之后的版本，或者安装了2.6.4之后的libressl \
+1. ``Can't connect to HTTPS URL because the SSL module is not available`` 
+
+  原因：在Python3.7之后的版本，依赖的openssl，必须要是1.1或者1.0.2之后的版本，或者安装了2.6.4之后的libressl 
+  
   解决方法：网上说使用源码升级openssl，亲自实验后，发现未生效。最后解决方法是，删除openssl和openssl-devel，然后重装openssl和openssl-devel，再重新编译安装python3.7.5
 # 8. reference
 * [清华镜像源](https://mirror.tuna.tsinghua.edu.cn/help/pypi/)
 * [python安装包下载地址](https://www.python.org/ftp/python/)
-* []()
+* [https://www.jianshu.com/p/f8585da77ed9](https://www.jianshu.com/p/f8585da77ed9)
+* [https://www.cnblogs.com/minglee/p/9232673.html](https://www.cnblogs.com/minglee/p/9232673.html)
+* [https://blog.51cto.com/13544424/2149473](https://blog.51cto.com/13544424/2149473)
