@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "docker笔记: 在容器中实现docker命令"
+title: "docker笔记: 在容器中使用docker命令"
 subtitle: "docker in docker 实践"
 author: Xiaolei.liang
 header-img: "img/post-bg-unix-linux.jpg"
