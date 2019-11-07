@@ -15,6 +15,7 @@ $ docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v $(which docker
 [root@5fcd5007c70e /]# docker ps
 ```
 > $ docker run -ti -v /var/run/docker.sock:/var/run/docker.sock -v /path/to/static-docker-binary:/usr/bin/docker busybox sh
+
 # 在centos7环境下使用docker in docker
 ```bash
 [root@hello ~]#  docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker-current:/bin/docker -ti centos:7
