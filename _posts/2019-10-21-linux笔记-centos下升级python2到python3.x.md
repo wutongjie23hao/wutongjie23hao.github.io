@@ -89,14 +89,18 @@ RUN yum -y install make gcc gcc-c++ zlib* openssl openssl-devel &&\
     make && make install &&\
     rm -rf /tmp/python  &&\
     rm -rf /tmp/tmp.tgz &&\
+    cd / &&\
+    rm -rf /usr/bin/python3 &&\
+    rm -rf /usr/bin/pip3 &&\
     ln -s /usr/local/python3/bin/python3 /usr/bin/python3 &&\
     ln -s /usr/local/python3/bin/pip3 /usr/bin/pip3 &&\
     # 设置为默认
     rm -rf /usr/bin/python && \
+    rm -rf /usr/bin/pip && \
     ln -s /usr/local/python3/bin/python3 /usr/bin/python && \
     ln -s /usr/local/python3/bin/pip3 /usr/bin/pip && \
     sed -i "s/python/python2/g" /usr/bin/yum && \
-    sed -i "s/python/python2/g" /usr/libexec/urlgrabber-ext-down && \
+    sed -i "s/python/python2/g" /usr/libexec/urlgrabber-ext-down &&\
     # 设置pip源
     pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U && \
     pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple && \
