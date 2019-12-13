@@ -9,16 +9,29 @@ tags:
   - docker
   - linux
 ---
+## 1. 步骤
+```
+	# cd /etc/yum.repos.d/ && mkdir -p bak && mv centos7.repo bak/
+	# echo '<清华镜像源>' > centos7.repo
+	# yum update -y
+	# yum install -y epel-release
+	# yum remove docker-* -y
+	# yum -y install yum-utils
+	# yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+	# yum install -y http://mirror.centos.org/centos/7/extras/x86_64/Packages/container-selinux-2.107-3.el7.noarch.rpm 
+	# yum install -y docker-ce
+	# systemctl start docker
+	# systemctl status docker
+	# yum clean all
+	# rm -f ./*
+	# mv bak/* ./ 
+# rm -rf bak
+```
 
-## 添加清华的yum源并更新
-### 添加清华的yum源
-[清华CentOS镜像源使用帮助](https://mirrors.tuna.tsinghua.edu.cn/help/centos/)
-
+## 2. 其中清华的yum源
+* [清华镜像源使用帮助](https://mirrors.tuna.tsinghua.edu.cn/help/centos/)
+* ``centos7.repo``:
 ```bash
-# 备份 CentOS-Base.repo
-$ mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.bak
-# 启用 TUNA 软件仓库， 将以下内容写入 /etc/yum.repos.d/CentOS-Base.repo
-$ cat /etc/yum.repos.d/CentOS-Base.repo
 # CentOS-Base.repo
 #
 # The mirror system uses the connecting IP address of the client and the
@@ -63,25 +76,8 @@ gpgcheck=1
 enabled=0
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
 ```
-### 执行yum update操作
+## 3. 查看docker的version
 ```
-[root@~]# yum update
-```
-
-## 安装epel源，并安装docker-ce
-[清华epel源](https://mirrors.tuna.tsinghua.edu.cn/help/epel/)
-
-```bash
-yum install -y epel-release
-yum remove docker-* -y
-
-yum-config-manager \
-    --add-repo \
-    https://download.docker.com/linux/centos/docker-ce.repo
-
-yum install -y http://mirror.centos.org/centos/7/extras/x86_64/Packages/container-selinux-2.107-3.el7.noarch.rpm
-
-yum install -y docker-ce
 [~]# docker version
 Client: Docker Engine - Community
  Version:           19.03.5
