@@ -11,27 +11,27 @@ tags:
 ---
 ## 1. 步骤
 ```
-	# cd /etc/yum.repos.d/ && mkdir -p bak && mv centos7.repo bak/
-	# echo '<清华镜像源>' > centos7.repo
-	# yum update -y
-	# yum install -y epel-release
-	# yum remove docker-* -y
-	# yum -y install yum-utils
-	# yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-	# yum install -y http://mirror.centos.org/centos/7/extras/x86_64/Packages/container-selinux-2.107-3.el7.noarch.rpm 
-	# yum install -y docker-ce
-	# systemctl start docker
-	# systemctl status docker
-	# yum clean all
-	# rm -f ./*
-	# mv bak/* ./ 
+# cd /etc/yum.repos.d/ && mkdir -p bak && mv centos7.repo bak/
+# echo '<清华镜像源>' > centos7.repo
+# yum update -y
+# yum install -y epel-release
+# yum remove docker-* -y
+# yum -y install yum-utils
+# yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+# yum install -y http://mirror.centos.org/centos/7/extras/x86_64/Packages/container-selinux-2.107-3.el7.noarch.rpm 
+# yum install -y docker-ce
+# systemctl start docker
+# systemctl status docker
+# yum clean all
+# rm -f ./*
+# mv bak/* ./ 
 # rm -rf bak
 ```
 
 ## 2. 其中清华的yum源
 * [清华镜像源使用帮助](https://mirrors.tuna.tsinghua.edu.cn/help/centos/)
 * ``centos7.repo``:
-```bash
+```
 # CentOS-Base.repo
 #
 # The mirror system uses the connecting IP address of the client and the
