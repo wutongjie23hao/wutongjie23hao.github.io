@@ -31,6 +31,7 @@ tags:
 ## 2. 其中清华的yum源
 * [清华镜像源使用帮助](https://mirrors.tuna.tsinghua.edu.cn/help/centos/)
 * ``centos7.repo``:
+
 ```
 # CentOS-Base.repo
 #
