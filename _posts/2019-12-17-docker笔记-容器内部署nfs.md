@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "linux笔记: centos下编译coreutils"
-subtitle: "glibc1.12(centos6)和glibc2.17(centos7)下编译coreutils"
+title: "linux笔记: 容器内部署nfs"
+subtitle: "容器内安装nfs来共享自己的存储实践"
 author: Xiaolei.liang
 header-img: "img/post-bg-unix-linux.jpg"
 catalog: true
