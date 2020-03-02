@@ -88,7 +88,7 @@ Vagrant.configure("2") do |config|
                 echo root:root123 | chpasswd 
             SHELL
             # 设置虚拟机的IP
-            node.vm.network "public_network", bridge: "eno1", ip: "192.168.17.20#{i}"
+            node.vm.network "public_network", bridge: "en0: Wi-Fi (AirPort)", ip: "192.168.17.20#{i}"
             # VirtaulBox相关配置
             node.vm.provider "virtualbox" do |v|
                 v.name = "node#{i}"
