@@ -88,7 +88,9 @@ Vagrant.configure("2") do |config|
                 echo root:root123 | chpasswd 
             SHELL
             # 设置虚拟机的IP
-            node.vm.network "public_network", bridge: "en0: Wi-Fi (AirPort)", ip: "192.168.17.20#{i}"
+            # node.vm.network "private_network", bridge: "en0: Wi-Fi (AirPort)", ip: "192.168.17.20#{i}"
+            # node.vm.network "private_network", type: "dhcp"
+            node.vm.network "private_network", bridge: "en0: Wi-Fi (AirPort)", type: "dhcp"
             # VirtaulBox相关配置
             node.vm.provider "virtualbox" do |v|
                 v.name = "node#{i}"
@@ -101,6 +103,10 @@ end
 # vagrant up
 # vagrant ssh node0 # 或者vagrant ssh node1
 ```
+## vagrant网络
+vagrant网络有两类：
+* private_network:使用virtualbox的主机模式。这种模式下，主机物理网卡和虚拟网卡不在同一vlan，物理机和虚拟机互相之间不通，虚拟机之间互通。
+* public_network:使用virtualbox的桥接模式。这种模式下，主机物理网卡和虚拟网卡在同一vlan，即在同一个二层网络，互相之间通过ip互通。
 
 ## vagrant的命令
 
