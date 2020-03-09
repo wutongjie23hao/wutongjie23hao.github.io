@@ -26,3 +26,10 @@ tags:
 ```
 
 通过``https://<ip>:8443``访问，用户名/密码：dev/dev
+
+# 2. rancher
+## 安装
+```
+docker run -d --restart=unless-stopped -p 80:80 -p 443:443 rancher/rancher
+```
+用户名/密码：admin/admin
