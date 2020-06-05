@@ -37,10 +37,17 @@ minikube start --vm-driver=none --image-repository gcr.azk8s.cn/google-container
 ```
 
 ## 问题
-使用azks.cn的镜像仓库，没有``gcr.azk8s.cn/google-containers/storage-provisioner:v1.8.1``
+1. 使用azks.cn的镜像仓库，没有``gcr.azk8s.cn/google-containers/storage-provisioner:v1.8.1``
 
 解决方法：
 ```bash
 docker pull k8sminikube/storage-provisioner:v1.8.1
 docker tag k8sminikube/storage-provisioner:v1.8.1 gcr.azk8s.cn/google-containers/storage-provisioner:v1.8.1
+```
+
+2. 可用的镜像registry
+
+```
+minikube delete
+minikube start --image-repository registry.cn-hangzhou.aliyuncs.com/google_containers --kubernetes-version v1.16.2 --vm-driver=none
 ```
