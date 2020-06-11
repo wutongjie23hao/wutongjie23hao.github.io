@@ -1,6 +1,3 @@
-
-
-```
 ---
 layout: post
 title: "k8s笔记：serverless-openfaas体验"
@@ -10,9 +7,8 @@ header-img: "img/post-bg-unix-linux.jpg"
 catalog: true
 tags:
   - k8s
-  - helm
+  - serverless
 ---
-```
 
 ## 1. 部署
 
