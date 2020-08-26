@@ -32,6 +32,7 @@ tags:
    - ``-F``: 生成一个可执行文件。
    - ``-p``: 打包依赖，如果没有这个参数，在执行可执行文件的时候，可能会报指定模块不存在的错误。
 
+> python2的时候，使用 pip install pyinstaller; pyinstaller -F -p /usr/lib/site-packages1:/usr/lib/site-packages2 app.py
 ## 其它
 
 | 参数/选项                   | 意义                                                     |
