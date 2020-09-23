@@ -51,3 +51,10 @@ docker tag k8sminikube/storage-provisioner:v1.8.1 gcr.azk8s.cn/google-containers
 minikube delete
 minikube start --image-repository registry.cn-hangzhou.aliyuncs.com/google_containers --kubernetes-version v1.16.2 --vm-driver=none
 ```
+3. 删除并使用新版本k8s
+```
+# docker 19.03-ce
+minikube delete --all
+/bin/rm -rf /etc/kubernetes
+minikube start --image-repository registry.cn-hangzhou.aliyuncs.com/google_containers --kubernetes-version v1.12.10 --vm-driver=none
+```
