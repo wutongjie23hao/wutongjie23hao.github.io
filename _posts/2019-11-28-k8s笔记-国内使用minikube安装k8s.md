@@ -51,14 +51,18 @@ docker tag k8sminikube/storage-provisioner:v1.8.1 gcr.azk8s.cn/google-containers
 minikube delete
 minikube start --image-repository registry.cn-hangzhou.aliyuncs.com/google_containers --kubernetes-version v1.16.2 --vm-driver=none
 ```
+
 3. 删除并使用新版本k8s
+
 ```
 # docker 19.03-ce
 minikube delete --all
 /bin/rm -rf /etc/kubernetes
 minikube start --image-repository registry.cn-hangzhou.aliyuncs.com/google_containers --kubernetes-version v1.12.10 --vm-driver=none
 ```
+
 4. 报错'Sorry that minikube crashed'.
+
 ```
 这个应该是有多种原因的，方法就是删除一切k8s相关东西。
 minikube delete
@@ -67,3 +71,4 @@ minikube delete
 
 kubelet是安装在本机上的service，而不是以镜像启动的，所以需要删除kubelet相关文件，否则网络、认证有问题，安装出错
 ```
+
