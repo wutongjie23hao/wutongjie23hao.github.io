@@ -58,3 +58,12 @@ minikube delete --all
 /bin/rm -rf /etc/kubernetes
 minikube start --image-repository registry.cn-hangzhou.aliyuncs.com/google_containers --kubernetes-version v1.12.10 --vm-driver=none
 ```
+4. 报错'Sorry that minikube crashed'.
+```
+这个应该是有多种原因的，方法就是删除一切k8s相关东西。
+minikube delete
+/bin/rm -rf /root/.kube /root/.minikube /etc/kubernetes
+/bin/rm -rf /usr/lib/systemd/system/kubelet.service /etc/systemd/system/kubelet.service  /etc/systemd/system/kubelet.service.d /var/lib/kubelet/  /etc/systemd/system/multi-user.target.wants/kubelet.service /usr/libexec/kubernetes/kubelet-plugins
+
+kubelet是安装在本机上的service，而不是以镜像启动的，所以需要删除kubelet相关文件，否则网络、认证有问题，安装出错
+```
