@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "linux笔记: 把iso镜像转换成docker镜像"
+title: "docker笔记: 把iso镜像转换成docker镜像"
 subtitle: "virtualbox种创建虚拟机，并制作镜像"
 author: Xiaolei.liang
 header-img: "img/post-bg-unix-linux.jpg"
