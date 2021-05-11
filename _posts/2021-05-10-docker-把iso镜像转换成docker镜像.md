@@ -23,7 +23,7 @@ tags:
 
    ```bash
    mkdir hello
-   tar -cvpf /hello/system.tar --directory=/ --exclude=proc  --exclude=hello --exclude=sys --exclude=dev --exclude=run --exclude=boot
+   tar -cvpf /hello/system.tar --directory=/ --exclude=proc  --exclude=hello --exclude=sys --exclude=dev --exclude=run --exclude=boot .
    ```
 
 2. 通过网络或者文件共享，把system.tar包拷贝到安装有docker的主机上
