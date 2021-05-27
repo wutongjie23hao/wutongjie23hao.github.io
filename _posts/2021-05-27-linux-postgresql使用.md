@@ -14,7 +14,7 @@ tags:
 
 | 命令描述                 | mysql                    | postgresql                                         |
 | ------------------------ | ------------------------ | -------------------------------------------------- |
-| client命令               | mysql                    | psgl                                               |
+| client命令               | mysql                    | psql                                               |
 | 列出数据库               | show databases;          | \l ; \list ;                                       |
 | 选择数据库               | use demo;                | /c demo;                                           |
 | 列出当前数据库的所有表格 | show tables;             | select * from pg_tables where schemaname='public'; |
