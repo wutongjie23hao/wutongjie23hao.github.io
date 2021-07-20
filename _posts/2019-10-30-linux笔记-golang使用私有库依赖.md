@@ -24,7 +24,7 @@ tags:
   ```
 3. 设置：
   ```bash
-  $ git config --global url."https://username:password@gitlab.com".insteadOf "https://gitlab.com/"
+  $ git config --global url."https://username:password@gitlab.com/".insteadOf "https://gitlab.com/"
   ```
 4. 使用``go mod``下载相关依赖：
   ```
