@@ -38,6 +38,22 @@ docker buildx create --use --driver-opt image="testbuilder:latest"
 
 ## 3. 尝试构建
 
+### 3.1 多架构镜像的dockerfile
+
+```dockerfile
+# syntax=docker/dockerfile:1
+FROM --platform=$BUILDPLATFORM golang:alpine AS build
+ARG TARGETPLATFORM
+ARG BUILDPLATFORM
+RUN echo "I am running on $BUILDPLATFORM, building for $TARGETPLATFORM" > /log
+FROM alpine
+COPY --from=build /log /log
+```
+
+
+
+### 3.2 buildx构建命令
+
 ```
 docker buildx build --no-cache --push --platform linux/arm64/v8,linux/amd64 -t liangxiaolei.fun/myimage -f mydockerfile .
 ```
