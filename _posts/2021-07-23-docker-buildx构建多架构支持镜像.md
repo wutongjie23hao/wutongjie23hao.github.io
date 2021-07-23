@@ -42,11 +42,11 @@ docker buildx create --use --driver-opt image=testbuilder:latest,network=host
 
 ```dockerfile
 # syntax=docker/dockerfile:1
-FROM --platform=$BUILDPLATFORM golang:alpine AS build
+FROM --platform=$TARGETPLATFORM golang:alpine AS build
 ARG TARGETPLATFORM
 ARG BUILDPLATFORM
 RUN echo "I am running on $BUILDPLATFORM, building for $TARGETPLATFORM" > /log
-FROM alpine
+FROM --platform=$TARGETPLATFORM alpine
 COPY --from=build /log /log
 ```
 
@@ -94,7 +94,7 @@ docker buildx build --no-cache --push --platform linux/arm64/v8,linux/amd64 -t l
 
 ### 4.1 下载buildx
 
-```
+```shell
 wget https://github.com/docker/buildx/releases/download/v0.6.0/buildx-v0.6.0.linux-amd64
 chmod +x buildx-v0.6.0.linux-amd64
 mv buildx-v0.6.0.linux-amd64 buildx
@@ -103,12 +103,12 @@ mv buildx /usr/local/bin
 
 ### 4.2 构建dockerfile
 
-```
-FROM --platform=$BUILDPLATFORM golang:alpine  AS build
+```dockerfile
+FROM --platform=$TARGETPLATFORM golang:alpine  AS build
 ARG TARGETPLATFORM
 ARG BUILDPLATFORM
 RUN echo "I am running on $BUILDPLATFORM, building for $TARGETPLATFORM" > /log
-FROM --platform=$BUILDPLATFORM  alpine
+FROM --platform=$TARGETPLATFORM  alpine
 COPY --from=build /log /log
 ```
 
@@ -122,7 +122,7 @@ buildx build --no-cache --push --platform linux/arm64/v8,linux/amd64 -t liangxia
 
 错误
 
-```
+```dockerfile
 error: failed to solve: rpc error: code = Unknown desc = failed to do request: Head "https://liangxiaolei.fun/v2/myimage/blobs/sha256:00000000000000000000000000": x509: certificate signed by unknown authority
 ```
 
@@ -139,7 +139,7 @@ EOF
 
 然后，构建命令为：
 
-```
+```dockerfile
 GODEBUG=x509ignoreCN=0 buildx build --no-cache --push --platform linux/arm64/v8,linux/amd64 -t liangxiaolei.fun/myimage:tag .
 ```
 
