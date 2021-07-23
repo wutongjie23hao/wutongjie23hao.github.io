@@ -51,16 +51,15 @@ COPY --from=build /log /log
 ```
 
 
-
 ### 3.2 buildx构建命令
 
-```
+```shell
 docker buildx build --no-cache --push --platform linux/arm64/v8,linux/amd64 -t liangxiaolei.fun/myimage -f mydockerfile .
 ```
 
 报错：
 
-```
+```shell
 error: failed to solve: rpc error: code = Unknown desc = failed to do request: Head "https://liangxiaolei.fun/v2/myimage/blobs/sha256:00000000000000000000000000": x509: certificate signed by unknown authority
 ```
 
@@ -68,7 +67,7 @@ error: failed to solve: rpc error: code = Unknown desc = failed to do request: H
 
 ## 4. 修复
 
-```
+```shell
 $ docker ps|grep 'testbuilder'
 ee110c9e6dfc   testbuilder:latest       "buildkitd"              27 minutes ago   Up 23 minutes             buildx_buildkit_distracted_payne0
 
@@ -85,7 +84,7 @@ $ docker restart ee110c9e6dfc
 
 然后进行：
 
-```
+```shell
 docker buildx build --no-cache --push --platform linux/arm64/v8,linux/amd64 -t liangxiaolei.fun/myimage -f mydockerfile .
 ```
 
